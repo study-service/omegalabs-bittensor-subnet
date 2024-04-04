@@ -25,7 +25,7 @@ import omega
 
 from omega.base.miner import BaseMinerNeuron
 from omega.imagebind_wrapper import ImageBind
-from omega.miner_utils import search_and_embed_videos
+from omega.miner_utils import search_and_embed_videos, search_and_embed_videos_parallel
 from omega.augment import LocalLLMAugment, OpenAIAugment, NoAugment
 from omega.utils.config import QueryAugment
 from omega.constants import VALIDATOR_TIMEOUT
@@ -62,7 +62,7 @@ class Miner(BaseMinerNeuron):
         if number_videos > 8:
             number_videos = 8
         bt.logging.info(f"Refine scraping request: {number_videos} videos for query '{synapse.query}'")
-        synapse.video_metadata = search_and_embed_videos(
+        synapse.video_metadata = search_and_embed_videos_parallel(
             self.augment(synapse.query), number_videos, self.imagebind
         )
         time_elapsed = time.time() - start

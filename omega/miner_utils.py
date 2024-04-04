@@ -107,7 +107,6 @@ def search_and_embed_videos(query: str, num_videos: int, imagebind: ImageBind) -
 
     return video_metas
 
-
 def search_and_embed_videos_parallel(query: str, num_videos: int, imagebind: ImageBind) -> List[VideoMetadata]:
     results = video_utils.search_videos(query, max_results=int(num_videos * 1.5))
     video_metas = []

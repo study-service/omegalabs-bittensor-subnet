@@ -62,7 +62,7 @@ class Miner(BaseMinerNeuron):
         if number_videos > 8:
             number_videos = 8
         bt.logging.info(f"Refine scraping request: {number_videos} videos for query '{synapse.query}'")
-        synapse.video_metadata = search_and_embed_videos_parallel(
+        synapse.video_metadata = search_and_embed_videos(
             self.augment(synapse.query), number_videos, self.imagebind
         )
         time_elapsed = time.time() - start

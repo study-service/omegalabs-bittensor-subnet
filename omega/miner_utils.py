@@ -130,6 +130,7 @@ def process_video(result, query: str, imagebind: ImageBind):
             end=min(result.length, FIVE_MINUTES)  # download the first 5 minutes at most
         )
         if download_path:
+            bt.logging.info(f"download path {download_path}")
             clip_path = None
             try:
                 result.length = video_utils.get_video_duration(download_path.name)  # correct the length

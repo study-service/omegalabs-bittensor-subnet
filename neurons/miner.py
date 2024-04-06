@@ -66,7 +66,9 @@ class Miner(BaseMinerNeuron):
             self.augment(synapse.query), number_videos, self.imagebind
         )
         time_elapsed = time.time() - start
-        if len(synapse.video_metadata) == synapse.num_videos and time_elapsed < VALIDATOR_TIMEOUT:
+        if time_elapsed < VALIDATOR_TIMEOUT:
+            bt.logging.info(f"–––––– SCRAPING Fail timeout: videos in {time_elapsed} seconds.")
+        if len(synapse.video_metadata) == synapse.num_videos:
             bt.logging.info(f"–––––– SCRAPING SUCCEEDED: Scraped {len(synapse.video_metadata)}/{synapse.num_videos} videos in {time_elapsed} seconds.")
         else:
             bt.logging.error(f"–––––– SCRAPING FAILED: Scraped {len(synapse.video_metadata)}/{synapse.num_videos} videos in {time_elapsed} seconds.")

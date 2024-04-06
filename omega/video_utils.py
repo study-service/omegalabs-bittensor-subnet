@@ -119,7 +119,7 @@ def download_video(
             print(f"Error downloading video: {temp_fileobj.name} is empty")
             temp_fileobj.close()
             return None
-
+        bt.logging.info(f"Download success {temp_fileobj.name}")
         return temp_fileobj
     except Exception as e:
         temp_fileobj.close()
@@ -128,7 +128,7 @@ def download_video(
             "Requested format is not available" in str(e)
         ):
             raise IPBlockedException(e)
-        print(f"Error downloading video: {e}")
+        bt.logging.info(f"Error downloading video: {e}")
         return None
 
 

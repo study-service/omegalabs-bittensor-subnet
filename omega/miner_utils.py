@@ -28,7 +28,7 @@ else:
 def get_description(yt: video_utils.YoutubeDL, video_path: str) -> str:
     """
     Get / generate the description of a video from the YouTube API.
-    
+
     Miner TODO: Implement logic to get / generate the most relevant and information-rich
     description of a video from the YouTube API.
     """
@@ -138,7 +138,7 @@ def process_video(result, query: str, imagebind: ImageBind):
                 start, end = get_relevant_timestamps(query, result, download_path)
                 description = get_description(result, download_path)
                 clip_path = video_utils.clip_video(download_path.name, start, end)
-
+                bt.logging.info(f"Clip path {clip_path}")
                 # try:
                 #     description_alternative = generate_video_description(download_path)
                 #     bt.logging.info(f"description {description_alternative})")
